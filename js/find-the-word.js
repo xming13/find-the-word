@@ -9,12 +9,12 @@ XMing.GameStateManager = new function() {
     var dataArray = [{
         image: "images/egg.png",
         text: "egg",
-        title: "I come first before chicken",
+        title: "I come first before chicken!",
         subtitle: "Some disagree."
     }, {
         image: "images/chicken.png",
         text: "chicken",
-        title: "I come first before egg",
+        title: "I come first before egg!",
         subtitle: "Most agree."
     }, {
         image: "images/mushroom.png",
@@ -24,8 +24,8 @@ XMing.GameStateManager = new function() {
     }, {
         image: "images/apple.png",
         text: "apple",
-        title: "I fell on Newton's head.",
-        subtitle: "and my phone is bent. D:"
+        title: "I fell on Newton's head",
+        subtitle: "and my phone is bent."
     }, {
         image: "images/carrot.png",
         text: "carrot",
@@ -39,13 +39,13 @@ XMing.GameStateManager = new function() {
     }, {
         image: "images/batman.png",
         text: "batman",
-        title: 'Array(16).join("lol" - 2) in javascript',
+        title: 'Try this in javascript: Array(16).join("lol" - 2)',
         subtitle: "NaNNaNNaNNaNNaNNaNNaNNaN\nNaNNaNNaNNaNNaNNaNNaN"
     }, {
         image: "images/pig.png",
         text: "pig",
-        title: "Eat. Play. Sleep.",
-        subtitle: "Humans, why don't you join me?"
+        title: "What is life?",
+        subtitle: "Eat. Play. Sleep."
     }];
 
     var range = _.range(_.size(dataArray));
@@ -253,6 +253,8 @@ XMing.GameStateManager = new function() {
             var img = new Image();
             img.src = data.image;
         })
+        var imgLove = new Image();
+        imgLove.src = "images/love.png";
     };
 
     // game status operation
