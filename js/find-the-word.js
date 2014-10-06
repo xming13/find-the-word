@@ -24,8 +24,8 @@ XMing.GameStateManager = new function() {
     }, {
         image: "images/apple.png",
         text: "apple",
-        title: "I fell on Newton's head. I keep the doctor away. Snow White cannot resist me.",
-        subtitle: "but recently I got bent. D:"
+        title: "I fell on Newton's head.",
+        subtitle: "and my phone is bent. D:"
     }, {
         image: "images/carrot.png",
         text: "carrot",
@@ -35,18 +35,19 @@ XMing.GameStateManager = new function() {
         image: "images/orange.png",
         text: "orange",
         title: "I am a colour. I am a fruit. The colour of the fruit is me.",
-        subtitle: "This holds true in many languages too."
+        subtitle: "This relationship is complicated."
     }, {
         image: "images/batman.png",
         text: "batman",
-        title: 'javascript\nArray(16).join("lol" - 2)',
+        title: 'Array(16).join("lol" - 2) in javascript',
         subtitle: "NaNNaNNaNNaNNaNNaNNaNNaN\nNaNNaNNaNNaNNaNNaNNaN"
     }, {
         image: "images/pig.png",
         text: "pig",
         title: "Eat. Play. Sleep.",
-        subtitle: "Humans, why don't you join me?\n I promise you it will be fun."
+        subtitle: "Humans, why don't you join me?"
     }];
+
     var range = _.range(_.size(dataArray));
     var currentData;
     var selectedLetters = [];
@@ -246,9 +247,18 @@ XMing.GameStateManager = new function() {
         });
     };
 
+    this.preloadImage = function() {
+
+        _.each(dataArray, function(data) {
+            var img = new Image();
+            img.src = data.image;
+        })
+    };
+
     // game status operation
     this.initGame = function() {
         gameState = GAME_STATE_ENUM.INITIAL;
+        this.preloadImage();
 
         var self = this;
         $(".icon-repeat").click(function() {

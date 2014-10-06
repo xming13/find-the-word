@@ -104,7 +104,7 @@ a {
 }
 
 .container > header nav a:hover {
-    background: #18002a;
+    background: #c36fff;
 }
 
 .container > header nav a:hover:before {
@@ -123,7 +123,7 @@ a {
     font-weight: normal;
     line-height: 2;
     text-align: center;
-    color: #18002a;
+    color: #c36fff;
     -webkit-font-smoothing: antialiased;
 }
 
@@ -193,7 +193,7 @@ a {
 
 .panel-game {
     position: relative;
-    width: 60%;
+    width: 50%;
     margin: 0 auto;
 }
 
@@ -386,7 +386,7 @@ a {
 .game-letters span {
     display: inline-block;
     margin-left: 1vw;
-    font-size: 3vw;
+    font-size: 2vw;
     font-weight: bold;
     text-decoration: underline;
 }
