@@ -403,7 +403,7 @@ a {
     display: table-cell;
     text-align: center;
     vertical-align: middle;
-    font-size: 9.5vw;
+    font-size: 8vw;
     text-shadow: 0 0 5px #000; /* horizontal-offset vertical-offset 'blur' colour */
     -moz-text-shadow: 0 0 5px #000;
     -webkit-text-shadow: 0 0 5px #000;
