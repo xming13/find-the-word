@@ -10,12 +10,42 @@ XMing.GameStateManager = new function() {
         image: "images/egg.png",
         text: "egg",
         title: "I come first before chicken",
-        subtitle: "Some disagrees."
+        subtitle: "Some disagree.\nThose are my enemies."
+    }, {
+        image: "images/chicken.png",
+        text: "chicken",
+        title: "I come first before egg",
+        subtitle: "Most agree.\nThose are my friends."
     }, {
         image: "images/mushroom.png",
         text: "mushroom",
-        title: "Mario's size doubles",
-        subtitle: "when consumed"
+        title: "Beware!",
+        subtitle: "Mario's size doubles when consumed"
+    }, {
+        image: "images/apple.png",
+        text: "apple",
+        title: "I fell on Newton's head.\nI keep the doctor away.\nSnow White cannot resist me.",
+        subtitle: "but recently I just got bent. D:"
+    }, {
+        image: "images/carrot.png",
+        text: "carrot",
+        title: '"I know nobody will see my status"',
+        subtitle: '"but sometimes when I am bored, I go into the garden, I cover myself in earth and I pretend I am a ______."'
+    }, {
+        image: "images/orange.png",
+        text: "orange",
+        title: "I am both a colour and a fruit with me as the colour.",
+        subtitle: "This holds true in many languages too."
+    },  {
+        image: "images/batman.png",
+        text: "batman",
+        title: 'javascript\nArray(16).join("lol" - 2)',
+        subtitle: "NaNNaNNaNNaNNaNNaNNaNNaN\nNaNNaNNaNNaNNaNNaNNaN"
+    }, {
+        image: "images/pig.png",
+        text: "pig",
+        title: "Eat. Play. Sleep.",
+        subtitle: "Humans, why don't you join me?\n I promise you it's fun."
     }
     ];
     var range = _.range(_.size(dataArray));
@@ -64,8 +94,8 @@ XMing.GameStateManager = new function() {
 
         $('html, body').scrollTop($("#panel-container").offset().top);
 
-        remainingTime = 999999;
-        $("#timer-value").html(Math.ceil(remainingTime));
+        remainingTime = 10.5;
+        $("#timer-value").html(Math.floor(remainingTime));
         $("#timer-value").removeClass("animated fadeIn");
 
         $("#image-to-guess").attr('src', currentData.image);
