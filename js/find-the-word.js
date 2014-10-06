@@ -10,12 +10,12 @@ XMing.GameStateManager = new function() {
         image: "images/egg.png",
         text: "egg",
         title: "I come first before chicken",
-        subtitle: "Some disagree.\nThose are my enemies."
+        subtitle: "Some disagree."
     }, {
         image: "images/chicken.png",
         text: "chicken",
         title: "I come first before egg",
-        subtitle: "Most agree.\nThose are my friends."
+        subtitle: "Most agree."
     }, {
         image: "images/mushroom.png",
         text: "mushroom",
@@ -24,8 +24,8 @@ XMing.GameStateManager = new function() {
     }, {
         image: "images/apple.png",
         text: "apple",
-        title: "I fell on Newton's head.\nI keep the doctor away.\nSnow White cannot resist me.",
-        subtitle: "but recently I just got bent. D:"
+        title: "I fell on Newton's head. I keep the doctor away. Snow White cannot resist me.",
+        subtitle: "but recently I got bent. D:"
     }, {
         image: "images/carrot.png",
         text: "carrot",
@@ -34,9 +34,9 @@ XMing.GameStateManager = new function() {
     }, {
         image: "images/orange.png",
         text: "orange",
-        title: "I am both a colour and a fruit with me as the colour.",
+        title: "I am a colour. I am a fruit. The colour of the fruit is me.",
         subtitle: "This holds true in many languages too."
-    },  {
+    }, {
         image: "images/batman.png",
         text: "batman",
         title: 'javascript\nArray(16).join("lol" - 2)',
@@ -45,18 +45,17 @@ XMing.GameStateManager = new function() {
         image: "images/pig.png",
         text: "pig",
         title: "Eat. Play. Sleep.",
-        subtitle: "Humans, why don't you join me?\n I promise you it's fun."
-    }
-    ];
+        subtitle: "Humans, why don't you join me?\n I promise you it will be fun."
+    }];
     var range = _.range(_.size(dataArray));
     var currentData;
     var selectedLetters = [];
+
     var ALL_LETTERS = [
         'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j',
         'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't',
-        'u', 'v', 'w', 'x', 'y', 'z'];
-
-    // declare CONSTANTS
+        'u', 'v', 'w', 'x', 'y', 'z'
+    ];
     var GAME_STATE_ENUM = {
         INITIAL: "initial",
         START: "start",
@@ -69,9 +68,7 @@ XMing.GameStateManager = new function() {
         this.initGame();
     };
 
-    this.loadData = function() {
-        var self = this;
-
+    this.loadGrid = function() {
         var index = _.sample(range);
         range = _.without(range, index);
 
@@ -93,10 +90,16 @@ XMing.GameStateManager = new function() {
         this.onResize();
 
         $('html, body').scrollTop($("#panel-container").offset().top);
+    };
+
+    this.loadData = function() {
+        var self = this;
+
+        this.loadGrid();
 
         remainingTime = 10.5;
-        $("#timer-value").html(Math.floor(remainingTime));
-        $("#timer-value").removeClass("animated fadeIn");
+        $("#timer-value").html(Math.floor(remainingTime))
+            .removeClass("animated fadeIn");
 
         $("#image-to-guess").attr('src', currentData.image);
 
@@ -144,9 +147,7 @@ XMing.GameStateManager = new function() {
                 });
 
                 self.loadSelectedLetters();
-            }
-            else {
-
+            } else {
                 if (selectedLetters.length < currentData.text.split('').length) {
                     $(this).addClass("selected");
 
@@ -158,28 +159,7 @@ XMing.GameStateManager = new function() {
                     self.loadSelectedLetters();
                     self.checkResult();
                 }
-
-//                if (selectedLetter == correctAnswer[nextCorrectAnswerIndex]) {
-//                    nextCorrectAnswerIndex++;
-//
-//                    if (nextCorrectAnswerIndex >= correctAnswer.length) {
-//
-//                    }
-                }
-//                else {
-//                $("#result-content")
-//                    .html("Wrong!")
-//                    .addClass('animated bounceIn')
-//                    .css("color", "rgba(255, 0, 0, 255)");
-//
-//                score -= remainingTime * 10;
-//                $(".score-change")
-//                    .html("-" + remainingTime * 10)
-//                    .css("color", "rgba(255, 0, 0, 255)");
-//                }
-
-
-//            }
+            }
         });
     };
 
@@ -191,9 +171,9 @@ XMing.GameStateManager = new function() {
         });
 
         var correctAnswerLength = currentData.text.split('').length;
-        var numEmpty =  correctAnswerLength - selectedLetters.length;
+        var numEmpty = correctAnswerLength - selectedLetters.length;
         _.times(numEmpty, function() {
-            $(".game-letters").append("<span>&nbsp;&nbsp;&nbsp;&nbsp;</span>");
+            $(".game-letters").append("<span>&nbsp;&nbsp;&nbsp;</span>");
         });
     };
 
@@ -223,8 +203,7 @@ XMing.GameStateManager = new function() {
             });
             clearTimeout(gameTimer);
             this.loadNextRound();
-        }
-        else {
+        } else {
             if (selectedLetters.length == currentData.text.split('').length) {
                 $(".game-letters").addClass("animated shake answer-wrong");
                 $('.game-letters').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function() {
@@ -290,36 +269,78 @@ XMing.GameStateManager = new function() {
     this.endGame = function() {
         gameState = GAME_STATE_ENUM.END;
 
-        var html = "<li><div class='content'>#</div></li>";
-        html += "<li><div class='content'>#</div></li>";
-        html += "<li><div class='content'>#</div></li>";
-        html += "<li><div class='content'>#</div></li>";
+        var self = this;
 
-        html += "<li><div class='content'>G</div></li>";
-        html += "<li><div class='content'>A</div></li>";
-        html += "<li><div class='content'>M</div></li>";
-        html += "<li><div class='content'>E</div></li>";
+        $("#image-to-guess").attr('src', "images/word-grid.png");
+        selectedLetters = [];
+        currentData = {
+            image: "images/word-grid.png",
+            text: "GAMELOVER"
+        };
+        this.loadSelectedLetters();
 
-        html += "<li><div class='content'>O</div></li>";
-        html += "<li><div class='content'>V</div></li>";
-        html += "<li><div class='content'>E</div></li>";
-        html += "<li><div class='content'>R</div></li>";
+        $(".game-grid").html("");
 
-        html += "<li><div class='content'>#</div></li>";
-        html += "<li><div class='content'>#</div></li>";
-        html += "<li><div class='content'>#</div></li>";
-        html += "<li><div class='content'>#</div></li>";
+        var letters = ["G", "A", "M", "E", "O", "V", "E", "R", "L"];
+        _.times(7, function() {
+            letters.push("#");
+        });
+        _.each(_.shuffle(letters), function(letter) {
+            $(".game-grid").append("<li><div class='content animated fadeIn'>" + letter + "</li>");
+        });
 
-        $(".game-grid").html(html);
         $("#timer").hide();
         $("#replay").show();
         $("#score-value").html(score);
         this.onResize();
         $('html, body').scrollTop($("#panel-container").offset().top);
 
-        swal({ title: "Congratulations!",
+        swal({
+            title: "Congratulations!",
             text: "Your score is " + score + "! :D",
             imageUrl: "images/word-grid.png"
+        });
+
+        $("ul.game-grid li").click(function() {
+
+            if ($(this).hasClass("selected")) {
+                $(this).removeClass("selected");
+
+                var selectedNumber = $(this).attr("data-number");
+                selectedLetters.splice(selectedNumber - 1, 1);
+
+                _.each(_.filter($("ul.game-grid li"), function(li) {
+                    return $(li).attr("data-number") > selectedNumber;
+                }), function(li) {
+                    $(li).attr("data-number", parseInt($(li).attr("data-number")) - 1);
+                });
+
+                self.loadSelectedLetters();
+            } else {
+                if (selectedLetters.length < currentData.text.split('').length) {
+                    $(this).addClass("selected");
+
+                    var selectedLetter = $(this.firstChild).html();
+                    selectedLetters.push(selectedLetter);
+
+                    $(this).attr("data-number", selectedLetters.length);
+
+                    self.loadSelectedLetters();
+                    if (_.isEqual(selectedLetters, currentData.text.split(''))) {
+                        swal({
+                            title: "Thanks for playing!!!",
+                            imageUrl: "images/love.png"
+                        });
+                    } else {
+                        if (selectedLetters.length == currentData.text.split('').length) {
+                            $(".game-letters").addClass("animated shake answer-wrong");
+                            $('.game-letters').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function() {
+                                $(this).removeClass("animated shake answer-wrong");
+                            });
+                        }
+                    }
+                }
+            }
         });
     };
 
