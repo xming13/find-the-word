@@ -8,10 +8,14 @@ XMing.GameStateManager = new function() {
     var remainingTime;
     var dataArray = [{
         image: "images/egg.png",
-        text: "egg"
+        text: "egg",
+        title: "I come first before chicken",
+        subtitle: "Some disagrees."
     }, {
         image: "images/mushroom.png",
-        text: "mushroom"
+        text: "mushroom",
+        title: "Mario's size doubles",
+        subtitle: "when consumed"
     }
     ];
     var range = _.range(_.size(dataArray));
@@ -67,8 +71,8 @@ XMing.GameStateManager = new function() {
         $("#image-to-guess").attr('src', currentData.image);
 
         swal({
-            title: "Guess!",
-            text: "a " + currentData.text.length + "-letter word",
+            title: currentData.title,
+            text: currentData.subtitle + "\n\n(" + currentData.text.length + "-letter word)",
             imageUrl: currentData.image
         }, function() {
             (function countdown() {
@@ -112,15 +116,18 @@ XMing.GameStateManager = new function() {
                 self.loadSelectedLetters();
             }
             else {
-                $(this).addClass("selected");
 
-                var selectedLetter = $(this.firstChild).html();
-                selectedLetters.push(selectedLetter);
+                if (selectedLetters.length < currentData.text.split('').length) {
+                    $(this).addClass("selected");
 
-                $(this).attr("data-number", selectedLetters.length);
+                    var selectedLetter = $(this.firstChild).html();
+                    selectedLetters.push(selectedLetter);
 
-                self.loadSelectedLetters();
-                self.checkResult();
+                    $(this).attr("data-number", selectedLetters.length);
+
+                    self.loadSelectedLetters();
+                    self.checkResult();
+                }
 
 //                if (selectedLetter == correctAnswer[nextCorrectAnswerIndex]) {
 //                    nextCorrectAnswerIndex++;
@@ -186,6 +193,14 @@ XMing.GameStateManager = new function() {
             });
             clearTimeout(gameTimer);
             this.loadNextRound();
+        }
+        else {
+            if (selectedLetters.length == currentData.text.split('').length) {
+                $(".game-letters").addClass("animated shake answer-wrong");
+                $('.game-letters').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function() {
+                    $(this).removeClass("animated shake answer-wrong");
+                });
+            }
         }
     };
 
@@ -274,7 +289,7 @@ XMing.GameStateManager = new function() {
 
         swal({ title: "Congratulations!",
             text: "Your score is " + score + "! :D",
-            imageUrl: "images/oo0oo.png"
+            imageUrl: "images/word-grid.png"
         });
     };
 

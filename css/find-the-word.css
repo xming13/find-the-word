@@ -89,7 +89,7 @@ a {
 
 .container > header nav a:after {
     content: attr(data-info);
-    color: #444;
+    color: #fff;
     position: absolute;
     width: 600%;
     top: 120%;
@@ -104,7 +104,7 @@ a {
 }
 
 .container > header nav a:hover {
-    background: #b2b271;
+    background: #18002a;
 }
 
 .container > header nav a:hover:before {
@@ -123,7 +123,7 @@ a {
     font-weight: normal;
     line-height: 2;
     text-align: center;
-    color: #B2B271;
+    color: #18002a;
     -webkit-font-smoothing: antialiased;
 }
 
@@ -175,9 +175,9 @@ a {
     font-size: 15px;
     font-weight: normal;
     text-align: center;
-    color: #333;
-    background-color: #ffcf00;
-    border: 1px solid #ffdf11;
+    color: #fff;
+    background-color: #6700B1;
+    border: 1px solid #53008F;
     -webkit-border-radius: 5px;
     -moz-border-radius: 5px;
     border-radius: 5px;
@@ -185,9 +185,9 @@ a {
 }
 
 .btn-play:hover {
-    color: #333;
-    background-color: #ffee00;
-    border-color: #ffff11;
+    color: #fff;
+    background-color: #9401ff;
+    border-color: #7D01D6;
     outline: 0px none;
 }
 
@@ -255,12 +255,12 @@ a {
 #timer {
     float: left;
     padding: 5px;
-    border: 2px solid #555;
+    border: 2px solid #c0f;
     -webkit-border-radius: 10px;
     -moz-border-radius: 10px;
     border-radius: 10px;
-    background: #FFEB00;
-    color: black;
+    background: #9401ff;
+    color: #fff;
 }
 
 #timer-value {
@@ -278,12 +278,12 @@ a {
 #score {
     float: right;
     padding: 5px;
-    border: 2px solid #555;
+    border: 2px solid #c0f;
     -webkit-border-radius: 10px;
     -moz-border-radius: 10px;
     border-radius: 10px;
-    background: #FFEB00;
-    color: black;
+    background: #9401ff;
+    color: #fff;
 }
 
 .score-change {
@@ -379,6 +379,10 @@ a {
     vertical-align: middle;
 }
 
+.game-letters.answer-wrong {
+    color: #ff4f4f;
+}
+
 .game-letters span {
     display: inline-block;
     margin-left: 1vw;
@@ -433,7 +437,7 @@ and (max-device-width : 540px) {
         height: 20px;
         font-size: 13px;
     }
-    
+
     .game-grid li .content {
         font-size: 8vw;
     }
