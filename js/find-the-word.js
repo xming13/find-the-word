@@ -3,9 +3,10 @@ var XMing = XMing || {};
 XMing.GameStateManager = new function() {
 
     var gameState;
-    var score = 0;
     var gameTimer;
     var remainingTime;
+    var score = 0;
+
     var dataArray = [{
         image: "images/egg.png",
         text: "egg",
@@ -55,7 +56,7 @@ XMing.GameStateManager = new function() {
         image: "images/snoopy.png",
         text: "snoopy",
         title: "A dog (beagle)",
-        subtitle: "Still a dog"
+        subtitle: "Confirmed by Peanuts"
     }, {
         image: "images/pig.png",
         text: "pig",
@@ -71,6 +72,8 @@ XMing.GameStateManager = new function() {
     var range = _.range(_.size(dataArray));
     var currentData;
     var selectedLetters = [];
+
+    var injectedStyleDiv;
 
     var ALL_LETTERS = [
         'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j',
@@ -108,7 +111,7 @@ XMing.GameStateManager = new function() {
         _.each(letters, function(letter) {
             $(".game-grid").append("<li><div class='content animated fadeIn'>" + letter + "</li>");
         });
-        this.onResize();
+
     };
 
     this.loadData = function() {
@@ -150,6 +153,7 @@ XMing.GameStateManager = new function() {
         });
 
         this.loadSelectedLetters();
+
 
         $("ul.game-grid li").click(function() {
 
@@ -263,6 +267,16 @@ XMing.GameStateManager = new function() {
         _.each(lis, function(li) {
             $(li).height(maxWidth);
         });
+
+        var styles = "<style>" + ".game-grid li { height: " + maxWidth + "px; } " + ".game-grid li .content { font-size: " + (maxWidth * 0.5) + "px; } " + "#result-content { font-size: " + (maxWidth * 0.8) + "px; } " + ".game-letters span { font-size: " + (maxWidth * 0.2) + "px; margin-left: " + (maxWidth * 0.1) + "px; } " + "</style>";
+
+        if (injectedStyleDiv) {
+            injectedStyleDiv.html(styles);
+        } else {
+            injectedStyleDiv = $("<div />", {
+                html: styles
+            }).appendTo("body");
+        }
     };
 
     this.preloadImage = function() {
@@ -292,7 +306,7 @@ XMing.GameStateManager = new function() {
         range = _.range(_.size(dataArray));
         $("#timer").show();
         $("#replay").hide();
-
+        this.onResize();
         this.loadData();
     };
 
@@ -322,7 +336,6 @@ XMing.GameStateManager = new function() {
         $("#timer").hide();
         $("#replay").show();
         $("#score-value").html(score);
-        this.onResize();
 
         swal({
             title: "Congratulations!",

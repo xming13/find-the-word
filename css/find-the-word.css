@@ -312,9 +312,6 @@ a {
     float: left;
     overflow: hidden;
     width: 25%;
-    /* Fallback */
-    width: -webkit-calc(25%);
-    width: calc(25%);
     cursor: pointer;
 }
 
@@ -327,7 +324,6 @@ a {
     display: table-cell;
     text-align: center;
     vertical-align: middle;
-    font-size: 5vw;
 }
 
 .game-grid li.selected {
@@ -386,8 +382,6 @@ a {
 
 .game-letters span {
     display: inline-block;
-    margin-left: 1vw;
-    font-size: 2vw;
     font-weight: bold;
     text-decoration: underline;
 }
@@ -404,7 +398,6 @@ a {
     display: table-cell;
     text-align: center;
     vertical-align: middle;
-    font-size: 8vw;
     text-shadow: 0 0 5px #000; /* horizontal-offset vertical-offset 'blur' colour */
     -moz-text-shadow: 0 0 5px #000;
     -webkit-text-shadow: 0 0 5px #000;
@@ -432,22 +425,9 @@ and (max-device-width : 540px) {
         font-size: 13px;
     }
 
-    .game-grid li .content {
-        font-size: 8vw;
-    }
-
-    .game-letters span {
-        font-size: 6vw;
-        margin-left: 2vw;
-    }
-
     #image-to-guess {
         height: 50px;
         width: 50px;
-    }
-
-    #result-content {
-        font-size: 16vw;
     }
 
     #result {
