@@ -20,12 +20,17 @@ XMing.GameStateManager = new function() {
         image: "images/mushroom.png",
         text: "mushroom",
         title: "Beware!",
-        subtitle: "Mario's size doubles when consumed"
+        subtitle: "Mario's size doubles when consumed."
     }, {
         image: "images/apple.png",
         text: "apple",
         title: "I fell on Newton's head",
-        subtitle: "and my phone is bent."
+        subtitle: "Snow White couldn't resist me!\nI bent."
+    }, {
+        image: "images/banana.png",
+        text: "banana",
+        title: "Many fell as they slip on me",
+        subtitle: "Minions love me!\nI split."
     }, {
         image: "images/carrot.png",
         text: "carrot",
@@ -42,10 +47,25 @@ XMing.GameStateManager = new function() {
         title: 'Try this in javascript: Array(16).join("lol" - 2)',
         subtitle: "NaNNaNNaNNaNNaNNaNNaNNaN\nNaNNaNNaNNaNNaNNaNNaN"
     }, {
+        image: "images/hellokitty.png",
+        text: "hellokitty",
+        title: "A cat without mouth",
+        subtitle: "Never was a cat"
+    }, {
+        image: "images/snoopy.png",
+        text: "snoopy",
+        title: "A dog (beagle)",
+        subtitle: "Still a dog"
+    }, {
         image: "images/pig.png",
         text: "pig",
         title: "What is life?",
         subtitle: "Eat. Play. Sleep."
+    }, {
+        image: "images/fish.png",
+        text: "fish",
+        title: "What is life?",
+        subtitle: "Hunt the smaller ones.\nAvoid the bigger ones."
     }];
 
     var range = _.range(_.size(dataArray));
