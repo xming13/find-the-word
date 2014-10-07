@@ -311,10 +311,10 @@ a {
     position: relative;
     float: left;
     overflow: hidden;
-    width: 24%;
+    width: 25%;
     /* Fallback */
-    width: -webkit-calc(100% / 4 - 2px);
-    width: calc(100% / 4 - 2px);
+    width: -webkit-calc(25%);
+    width: calc(25%);
     cursor: pointer;
     border: 1px solid #6200A9;
 }

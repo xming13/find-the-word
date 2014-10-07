@@ -109,8 +109,6 @@ XMing.GameStateManager = new function() {
             $(".game-grid").append("<li><div class='content animated fadeIn'>" + letter + "</li>");
         });
         this.onResize();
-
-        $('html, body').scrollTop($("#panel-container").offset().top);
     };
 
     this.loadData = function() {
@@ -325,7 +323,6 @@ XMing.GameStateManager = new function() {
         $("#replay").show();
         $("#score-value").html(score);
         this.onResize();
-        $('html, body').scrollTop($("#panel-container").offset().top);
 
         swal({
             title: "Congratulations!",
