@@ -44,7 +44,7 @@ XMing.GameStateManager = new function() {
     }, {
         image: "images/batman.png",
         text: "batman",
-        title: 'Try this in javascript: Array(16).join("lol" - 2)',
+        title: 'In javascript: Array(16).join("lol" - 2)',
         subtitle: "NaNNaNNaNNaNNaNNaNNaNNaN\nNaNNaNNaNNaNNaNNaNNaN"
     }, {
         image: "images/hellokitty.png",

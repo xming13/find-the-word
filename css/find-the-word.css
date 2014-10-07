@@ -311,11 +311,12 @@ a {
     position: relative;
     float: left;
     overflow: hidden;
-    width: 25%;
+    width: 24%;
     /* Fallback */
-    width: -webkit-calc(100% / 4);
-    width: calc(100% / 4);
+    width: -webkit-calc(100% / 4 - 2px);
+    width: calc(100% / 4 - 2px);
     cursor: pointer;
+    border: 1px solid #6200A9;
 }
 .game-grid li:hover {
     background: #fff;
@@ -423,13 +424,6 @@ and (max-device-width : 540px) {
 
     .panel-game {
         width: 100%;
-    }
-
-    .game-grid li {
-        width: 25%;
-        /* Fallback */
-        width: -webkit-calc(100% / 4);
-        width: calc(100% / 4);
     }
 
     .game-grid li:after {
