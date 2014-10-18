@@ -41,12 +41,12 @@
         }, {
             image: "images/orange.png",
             text: "orange",
-            title: "I am a colour.\nI am a fruit.",
+            title: "A colour\nA fruit",
             subtitle: "The colour is the fruit.\nThe fruit is the colour."
         }, {
             image: "images/hellokitty.png",
             text: "hellokitty",
-            title: "A cat\nwithout mouth",
+            title: "A cat without mouth",
             subtitle: "Never was a cat"
         }, {
             image: "images/snoopy.png",
