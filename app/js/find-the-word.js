@@ -31,7 +31,7 @@ XMing.GameStateManager = new function() {
     }, {
         image: "images/banana.png",
         text: "banana",
-        title: "I split",
+        title: "I split!",
         subtitle: "Minions love me!"
     }, {
         image: "images/carrot.png",
