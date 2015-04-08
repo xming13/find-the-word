@@ -83,12 +83,7 @@
             END: "end"
         };
 
-        this.init = function() {
-            window.addEventListener("resize", this.onResize.bind(this), false);
-            this.initGame();
-        };
-
-        this.loadGrid = function() {
+        this.setupGrid = function() {
             var index = _.sample(range);
             range = _.without(range, index);
 
@@ -110,10 +105,10 @@
 
         };
 
-        this.loadData = function() {
+        this.setupGameNode = function() {
             var self = this;
 
-            this.loadGrid();
+            this.setupGrid();
 
             remainingTime = 10.5;
             $("#timer-value").html(Math.floor(remainingTime))
@@ -141,7 +136,7 @@
                             .css("color", "rgba(17, 189, 255, 255)");
                         $("#timer-value").removeClass("animated fadeIn");
 
-                        self.loadNextRound();
+                        self.setupNextRound();
                     } else {
                         gameTimer = setTimeout(countdown, 500);
                     }
@@ -221,7 +216,7 @@
                     }
                 });
                 clearTimeout(gameTimer);
-                this.loadNextRound();
+                this.setupNextRound();
             } else {
                 if (selectedLetters.length == currentData.text.split('').length) {
                     $(".game-letters").addClass("animated shake answer-wrong");
@@ -232,7 +227,7 @@
             }
         };
 
-        this.loadNextRound = function() {
+        this.setupNextRound = function() {
             var self = this;
 
             var gameGrid = $("ul.game-grid");
@@ -245,15 +240,15 @@
                 $("#result").hide();
 
                 if (_.size(range) > 0) {
-                    self.loadData();
+                    self.setupGameNode();
                 } else {
                     self.endGame();
                 }
             }, 1000);
         };
 
-        this.onResize = function(event) {
-            if($(window).width() != windowWidth){
+        this.onResize = function() {
+            if ($(window).width() != windowWidth) {
                 windowWidth = $(window).width();
 
                 if (injectedStyleDiv) {
@@ -295,17 +290,27 @@
             imgLove.src = "images/love.png";
         };
 
-        // game status operation
+        // Game status operation
         this.initGame = function() {
+            var self = this;
             gameState = GAME_STATE_ENUM.INITIAL;
+
             this.preloadImage();
 
-            var self = this;
+            window.addEventListener("resize", this.onResize.bind(this), false);
+
+            FastClick.attach(document.body, {
+                tapDelay: 100
+            });
+
+            $(".btn-play").click(function() {
+                self.startGame();
+            });
+
             $(".icon-repeat").click(function() {
                 self.startGame();
             });
         };
-
         this.startGame = function() {
             gameState = GAME_STATE_ENUM.START;
             score = 0;
@@ -313,12 +318,17 @@
             $("#timer").show();
             $("#replay").hide();
 
+            $(".panel-main").hide();
+            $(".panel-game").show();
+            $('html, body').animate({
+                scrollTop: $(".panel-container").offset().top
+            }, 'fast');
+
             // set to 0 to force resize
             windowWidth = 0;
             this.onResize();
-            this.loadData();
+            this.setupGameNode();
         };
-
         this.endGame = function() {
             gameState = GAME_STATE_ENUM.END;
 
@@ -395,16 +405,18 @@
             });
         };
 
-        // check game state
+        // Check game state
         this.isGameStateInitial = function() {
             return gameState == GAME_STATE_ENUM.INITIAL;
         };
-
         this.isGameStateStart = function() {
             return gameState == GAME_STATE_ENUM.START;
         };
-
         this.isGameStateEnd = function() {
             return gameState == GAME_STATE_ENUM.END;
         };
     };
+
+    $(function() {
+        XMing.GameStateManager.initGame();
+    });
