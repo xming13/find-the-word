@@ -457,11 +457,22 @@ XMing.GameStateManager = new function() {
 
                     self.loadSelectedLetters();
                     if (_.isEqual(selectedLetters, currentData.text.split(''))) {
-                        swal({
-                            title: 'Congratulations!',
-                            text: 'You have found the Purple Egg!',
-                            imageUrl: 'images/purple-egg.png'
-                        });
+                        if (!userData.easterEgg.word) {
+                            userData.easterEgg.word = true;
+                            self.saveData(userData);
+                            swal({
+                                title: 'Congratulations!',
+                                text: 'You have found the Purple Egg!',
+                                imageUrl: 'images/purple-egg.png'
+                            });
+                        } else {
+                            swal({
+                                title: 'Congra... Oops!',
+                                text: 'You have collected the Purple Egg already!',
+                                imageUrl: 'images/purple-egg.png'
+                            });
+                        }
+
                     } else {
                         if (selectedLetters.length == currentData.text.split('').length) {
                             $(".game-letters").addClass("animated shake answer-wrong");
