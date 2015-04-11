@@ -7,6 +7,7 @@ XMing.GameStateManager = new function() {
     var userData;
     var gameTimer;
     var remainingTime;
+    var roundStartTime;
     var score = 0;
 
     var dataArray = [{
@@ -42,7 +43,7 @@ XMing.GameStateManager = new function() {
     }, {
         image: "images/orange.png",
         text: "orange",
-        title: "A colour?\n a fruit?",
+        title: "A colour?\n A fruit?",
         subtitle: "The colour is the fruit.\nThe fruit is the colour."
     }, {
         image: "images/hellokitty.png",
@@ -112,7 +113,8 @@ XMing.GameStateManager = new function() {
 
         this.setupGrid();
 
-        remainingTime = 10.5;
+        remainingTime = currentData.text.length + 3.5;
+
         $("#timer-value").html(Math.floor(remainingTime))
             .removeClass("animated fadeIn");
 
@@ -122,9 +124,10 @@ XMing.GameStateManager = new function() {
             title: currentData.title,
             text: currentData.subtitle + "\n\n(" + currentData.text.length + "-letter word)",
             imageUrl: currentData.image,
-            confirmButtonColor: '#c36fff',
             closeOnCancel: false
         }, function() {
+            roundStartTime = new Date();
+
             (function countdown() {
                 remainingTime -= 0.5;
                 $("#timer-value").html(Math.ceil(remainingTime));
@@ -137,7 +140,7 @@ XMing.GameStateManager = new function() {
                     $("#result-content")
                         .html("Time's up!")
                         .addClass('animated bounceIn')
-                        .css("color", "rgba(17, 189, 255, 255)");
+                        .css("color", "#11BDFF");
                     $("#timer-value").removeClass("animated fadeIn");
 
                     self.setupNextRound();
@@ -148,7 +151,6 @@ XMing.GameStateManager = new function() {
         });
 
         this.loadSelectedLetters();
-
 
         $("ul.game-grid li").click(function() {
 
@@ -200,12 +202,17 @@ XMing.GameStateManager = new function() {
             $("#result-content")
                 .html("Correct!")
                 .addClass('animated bounceIn')
-                .css("color", "rgba(0, 255, 0, 255)");
+                .css("color", "#0F0");
 
-            score += remainingTime * 10;
+            var roundEndTime = new Date();
+            var timeGiven = currentData.text.length + 3.0;
+            var timeRemained = timeGiven - (roundEndTime.getTime() - roundStartTime.getTime()) / 1000;
+            var scoreChanged = Math.ceil(timeRemained * 10);
+
+            score += scoreChanged;
             $(".score-change")
-                .html("+" + remainingTime * 10)
-                .css("color", "rgba(0, 255, 0, 255)");
+                .html("+" + scoreChanged)
+                .css("color", "#0F0");
 
             $("#timer-value").removeClass("animated fadeIn");
             $("#score-value").html(score);
