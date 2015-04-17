@@ -398,7 +398,6 @@ XMing.GameStateManager = new function() {
             title: "Congratulations!",
             text: "Your score is " + score + "! :D",
             imageUrl: "images/word-grid.png",
-            confirmButtonColor: '#c36fff',
             closeOnConfirm: false
         }, function() {
             var postingInProgress = false;
