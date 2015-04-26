@@ -431,6 +431,8 @@ XMing.GameStateManager = new function() {
                             text: "You are currently ranked " + data.rank_text + "!",
                             type: "success"
                         });
+                        userData.username = playerName;
+                        self.saveData(userData);
                     }).fail(function() {
                         swal({
                             title: "Oops...",
@@ -440,6 +442,7 @@ XMing.GameStateManager = new function() {
                     });
                 }
             });
+            $('.sweet-alert input[type=text]:first').val(userData.username);
         });
 
         $("ul.game-grid li").click(function() {
@@ -660,6 +663,7 @@ XMing.GameStateManager = new function() {
             },
             collectAll: false,
             uid: uid,
+            username: '',
             version: VERSION_NUMBER
         };
 
