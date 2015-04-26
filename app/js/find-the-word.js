@@ -13,58 +13,58 @@ XMing.GameStateManager = new function() {
     var dataArray = [{
         image: "images/egg.png",
         text: "egg",
-        title: "I come first before chicken!",
-        subtitle: "Some disagree."
+        title: "Egg",
+        subtitle: "comes before chicken!"
     }, {
         image: "images/chicken.png",
         text: "chicken",
-        title: "I come first before egg!",
-        subtitle: "Most agree."
+        title: "Chicken",
+        subtitle: "comes before egg!"
     }, {
         image: "images/mushroom.png",
         text: "mushroom",
-        title: "Beware!",
-        subtitle: "Mario's size doubles when consumed."
+        title: "Mushroom",
+        subtitle: "doubles Mario's size!"
     }, {
         image: "images/apple.png",
         text: "apple",
-        title: "I fell on Newton's head!",
-        subtitle: "Snow White couldn't resist me!"
+        title: "Apple",
+        subtitle: "fell on Newton's head!"
     }, {
         image: "images/banana.png",
         text: "banana",
-        title: "I split!",
+        title: "Banana",
         subtitle: "Minions love me!"
     }, {
         image: "images/carrot.png",
         text: "carrot",
-        title: "Me!",
-        subtitle: "or stick? >:D"
+        title: "Carrot",
+        subtitle: "comes with purple version!"
     }, {
         image: "images/orange.png",
         text: "orange",
-        title: "A colour?\n A fruit?",
-        subtitle: "The colour is the fruit.\nThe fruit is the colour."
+        title: "Orange",
+        subtitle: "is an orange fruit and an orange's colour!"
     }, {
         image: "images/hellokitty.png",
         text: "hellokitty",
-        title: "A cat without mouth?",
-        subtitle: "never was a cat!"
+        title: "Hello Kitty",
+        subtitle: "is not a cat!"
     }, {
         image: "images/snoopy.png",
         text: "snoopy",
-        title: "A dog?",
-        subtitle: "Yes, Peanuts has confirmed"
+        title: "Snoopy",
+        subtitle: "is a beagle!"
     }, {
         image: "images/pig.png",
         text: "pig",
-        title: "What is life?",
+        title: "Pig",
         subtitle: "Eat. Play. Sleep."
     }, {
         image: "images/fish.png",
         text: "fish",
-        title: "Sea survival tips",
-        subtitle: "Hunt the smaller ones!\nAvoid the bigger ones!"
+        title: "Fish",
+        subtitle: "Hunt the smaller ones!\nRun away from the bigger ones!"
     }];
 
     var range = _.range(_.size(dataArray));
@@ -122,7 +122,7 @@ XMing.GameStateManager = new function() {
 
         swal({
             title: currentData.title,
-            text: currentData.subtitle + "\n\n(" + currentData.text.length + "-letter word)",
+            text: currentData.subtitle,
             imageUrl: currentData.image,
             closeOnCancel: false
         }, function() {
