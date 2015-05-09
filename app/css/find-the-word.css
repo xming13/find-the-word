@@ -402,9 +402,6 @@ a {
     height: 50px;
     width: 50px; }
 
-  #result {
-    left: 0; }
-
   .icon-circle:after {
     content: ''; }
 
