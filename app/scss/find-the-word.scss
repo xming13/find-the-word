@@ -51,7 +51,7 @@ a {
 }
 
 .panel-container {
-    padding: 2%;
+    padding: 3%;
     text-align: center;
 }
 
@@ -161,10 +161,11 @@ a {
 .icon-circle:after {
     content: attr(data-info);
     position: absolute;
-    top: -28px;
+    top: -22px;
     left: 0;
     width: 95px;
     color: #fff;
+    font-size: 14px;
     font-weight: bold;
     text-align: left;
     opacity: 0;
@@ -236,6 +237,7 @@ a {
 
 .game-grid {
     padding: 0;
+    margin: 0;
     list-style: none;
     position: relative;
     background: #6200A9;
@@ -348,17 +350,18 @@ a {
     margin: 0;
     padding: 0;
     background: #E2B8FF;
-    min-height: 400px;
-}
+    min-height: 402px;
 
-.highscore-list li {
-    height: 40px;
-    border: 2px solid #A22ECA;
-    background: #ED7EFF;
-    color: #310E98;
-    font-size: 20px;
-    line-height: 40px;
-    list-style: none;
+    li {
+        height: 42px;
+        margin-bottom: -2px;
+        border: 2px solid #A22ECA;
+        background: #ED7EFF;
+        color: #310E98;
+        font-size: 20px;
+        line-height: 42px;
+        list-style: none;
+    }
 }
 
 .loader {
@@ -438,10 +441,13 @@ a {
     overflow: hidden !important;
 }
 
-@media only screen
-and (min-device-width : 320px)
-and (max-device-width : 540px) {
+/* Mobile Phones Portrait or Landscape */
+@media screen and (max-device-width : 640px) {
     .main-content {
+        margin: 0;
+    }
+
+    .subtitle {
         margin: 0;
     }
 
@@ -454,6 +460,11 @@ and (max-device-width : 540px) {
         width: 20px;
         height: 20px;
         font-size: 13px;
+    }
+
+    .heading {
+        font-size: 25px;
+        line-height: 40px;
     }
 
     #image-to-guess {
@@ -469,7 +480,17 @@ and (max-device-width : 540px) {
         content: '';
     }
 
+    .scoreboard {
+        margin-bottom: 0;
+    }
+
     .highscore-list {
-        min-height: 360px;
+        min-height: 302px;
+
+        li {
+            height: 32px;
+            line-height: 32px;
+            font-size: 16px;
+        }
     }
 }
