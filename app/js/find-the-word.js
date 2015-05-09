@@ -113,7 +113,7 @@ XMing.GameStateManager = new function() {
 
         this.setupGrid();
 
-        remainingTime = currentData.text.length + 3.5;
+        remainingTime = currentData.text.length + 99993.5;
 
         $("#timer-value").html(Math.floor(remainingTime))
             .removeClass("animated fadeIn");
@@ -271,7 +271,9 @@ XMing.GameStateManager = new function() {
             var liMaxWidth = _.max(lis, function(li) {
                 return $(li).width();
             });
-            var maxWidth = $(liMaxWidth).width() - 10;
+            // -10px to make the li smaller in order to fit the text below the ul
+            // +2px for the li border
+            var maxWidth = $(liMaxWidth).width() - 10 + 2;
 
             var styles = "<style>";
             styles += " ul.game-grid { width: " + (maxWidth * 4) + "px; } ";

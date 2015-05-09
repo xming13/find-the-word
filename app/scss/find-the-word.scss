@@ -238,19 +238,19 @@ a {
 .game-grid {
     padding: 0;
     margin: 0;
+    position: relative;
     left: 20px;
     list-style: none;
-    position: relative;
     background: #6200A9;
     color: #fff;
 }
 
 .game-grid li {
     display: table;
-    position: relative;
     float: left;
-    overflow: hidden;
+    position: relative;
     width: 25%;
+    border: 1px solid transparent;
     cursor: pointer;
 }
 
@@ -329,6 +329,7 @@ a {
 #result {
     position: absolute;
     top: 0;
+    left: 20px;
     margin: 0 auto;
     background: rgba(58, 58, 58, 0.8);
     display: table;
