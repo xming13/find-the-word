@@ -160,7 +160,7 @@ a {
   opacity: 1; }
 
 .icon-repeat {
-  margin-left: 20px; }
+  margin-left: 5px; }
 
 .icon-back-holder {
   position: absolute; }
@@ -210,6 +210,7 @@ a {
 .game-grid {
   padding: 0;
   margin: 0;
+  left: 20px;
   list-style: none;
   position: relative;
   background: #6200A9;
@@ -268,6 +269,7 @@ a {
   max-width: 100%; }
 
 .game-letters {
+  margin-top: 5px;
   text-align: center; }
 
 #image-to-guess {
@@ -406,7 +408,7 @@ a {
     content: ''; }
 
   .scoreboard {
-    margin-bottom: 0; }
+    margin-bottom: 10px; }
 
   .highscore-list {
     min-height: 302px; }

@@ -182,7 +182,7 @@ a {
 }
 
 .icon-repeat {
-    margin-left: 20px;
+    margin-left: 5px;
 }
 
 .icon-back-holder {
@@ -238,6 +238,7 @@ a {
 .game-grid {
     padding: 0;
     margin: 0;
+    left: 20px;
     list-style: none;
     position: relative;
     background: #6200A9;
@@ -305,6 +306,7 @@ a {
 }
 
 .game-letters {
+    margin-top: 5px;
     text-align: center;
 }
 
@@ -481,7 +483,7 @@ a {
     }
 
     .scoreboard {
-        margin-bottom: 0;
+        margin-bottom: 10px;
     }
 
     .highscore-list {

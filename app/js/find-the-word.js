@@ -271,7 +271,7 @@ XMing.GameStateManager = new function() {
             var liMaxWidth = _.max(lis, function(li) {
                 return $(li).width();
             });
-            var maxWidth = $(liMaxWidth).width();
+            var maxWidth = $(liMaxWidth).width() - 10;
 
             var styles = "<style>";
             styles += " ul.game-grid { width: " + (maxWidth * 4) + "px; } ";
