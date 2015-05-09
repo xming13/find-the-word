@@ -113,7 +113,7 @@ XMing.GameStateManager = new function() {
 
         this.setupGrid();
 
-        remainingTime = currentData.text.length + 99993.5;
+        remainingTime = currentData.text.length + 3.5;
 
         $("#timer-value").html(Math.floor(remainingTime))
             .removeClass("animated fadeIn");
