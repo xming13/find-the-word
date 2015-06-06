@@ -1,0 +1,17 @@
+{
+    "short_name": "find_the_word",
+    "name": "Find The Word",
+    "icons": [
+        {
+            "src": "images/word-grid.png",
+            "sizes": "150x150"
+        },
+        {
+            "src": "images/find-the-word-og.png",
+            "sizes": "200x200"
+        }
+    ],
+    "start_url": "index.html",
+    "display": "fullscreen",
+    "orientation": "portrait"
+}
